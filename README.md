@@ -9,5 +9,5 @@ This package provides basic common library for CSST.
 This library can be installed from sources with the following command: 
 
 ```bash
-python setup.py install
+pip install git+https://github.com/astronomical-data-processing/csst-dfs-commons.git
 ```
