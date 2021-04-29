@@ -9,9 +9,11 @@ class Result(dict):
     def success(self):
         return self["code"] >= 0
 
+    @property
     def data(self):
         return self["data"]
         
+    @property
     def message(self):
         return self["message"]
         
