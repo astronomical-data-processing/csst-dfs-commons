@@ -6,13 +6,14 @@ class Result(dict):
         self["message"] = ""
         self["data"] = None
     
+    @property
     def success(self):
         return self["code"] >= 0
 
     @property
     def data(self):
         return self["data"]
-        
+
     @property
     def message(self):
         return self["message"]
@@ -25,7 +26,7 @@ class Result(dict):
         return r
 
     @staticmethod
-    def ok_data(data):
+    def ok_data(data=None):
         r = Result()
         r["data"] = data
         return r
