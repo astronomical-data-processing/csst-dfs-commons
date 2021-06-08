@@ -2,7 +2,8 @@ import dataclasses
 
 def from_proto_model_list(clazz, records):
     return [clazz().from_proto_model(r) for r in records]
-
+def from_dict_list(clazz, records):
+    return [clazz().from_dict(r) for r in records]
 @dataclasses.dataclass
 class BaseModel:
 

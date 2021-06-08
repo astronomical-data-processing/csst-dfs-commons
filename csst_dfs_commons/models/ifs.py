@@ -7,7 +7,7 @@ class Level1Record(BaseModel):
     id: int = 0
     raw_id : int = 0
     data_type: str=""
-    or_sci_id: int = 0
+    cor_sci_id: int = 0
     prc_params: str=""
     flat_id: int = 0
     dark_id: int = 0
