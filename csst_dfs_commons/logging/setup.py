@@ -12,11 +12,11 @@ import logging.handlers
 def setup_logging():
     """ Setup logging configuration """
 
-    # Console formatter, mention name
-    cfmt = logging.Formatter(('%(name)s - %(levelname)s - %(message)s'))
+    cfmt = logging.Formatter(('%(asctime)s- %(name)s - %(filename)s - %(levelname)s - %(message)s'))
 
     # File formatter, mention time
-    ffmt = logging.Formatter(('%(asctime)s - %(levelname)s - %(message)s'))
+    ffmt = logging.Formatter(('%(asctime)s - %(filename)s - %(levelname)s - %(message)s'))
+
 
     # Console handler
     ch = logging.StreamHandler()

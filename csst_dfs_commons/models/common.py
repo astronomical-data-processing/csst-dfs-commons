@@ -13,7 +13,9 @@ class BaseModel:
         return self
 
     def from_proto_model(self, record):
-        return self.from_dict({r.name:v for r,v in record.ListFields()})
+        for k in self.__dataclass_fields__.keys():
+            self.__setattr__(k, record.__getattribute__(k))
+        return self
 
 @dataclasses.dataclass
 class Gaia3Record(BaseModel):

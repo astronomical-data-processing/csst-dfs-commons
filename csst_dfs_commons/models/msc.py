@@ -5,7 +5,7 @@ from .common import BaseModel
 @dataclasses.dataclass
 class Level1Record(BaseModel):
     id: int = 0
-    raw_id : int = 0
+    level0_id : str = ""
     data_type: str=""
     cor_sci_id: int = 0
     prc_params: str=""

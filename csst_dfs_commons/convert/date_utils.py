@@ -5,3 +5,6 @@ def format_datetime(dt):
 
 def format_date(dt):
     return dt.strftime('%Y-%m-%d')
+
+def format_sql_datetime(dt):
+    return str(dt) if isinstance(dt, datetime) else dt

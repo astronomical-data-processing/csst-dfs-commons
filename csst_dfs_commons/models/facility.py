@@ -6,6 +6,7 @@ from .common import BaseModel
 @dataclasses.dataclass
 class Observation(BaseModel):
     id: int = 0
+    obs_id: str = ""
     obs_time: str = ""
     exp_time : float = 0
     module_id: str=""
@@ -22,18 +23,19 @@ class Observation(BaseModel):
 @dataclasses.dataclass
 class Level0PrcRecord(BaseModel):
     id: int = 0
-    level0_id: int = 0
+    level0_id: str = ""
     pipeline_id: str = ""
     prc_module: str = ""
-    params_id: str=""
+    params_file_path: str=""
     prc_status: int = 0
     prc_time: str=""
-    file_path: str=""
+    result_file_path: str=""
 
 @dataclasses.dataclass
 class Level0Record(BaseModel):
     id: int = 0
-    obs_id: int = 0
+    level0_id: str = ""
+    obs_id: str = ""
     detector_no: str = ""
     obs_type: str = ""
     obs_time: str=""
@@ -50,6 +52,7 @@ class Level0Record(BaseModel):
 @dataclasses.dataclass
 class CalMergeRecord(BaseModel):
     id: int = 0
+    cal_id: str = ""
     detector_no: str = ""
     ref_type: str = ""
     obs_time: str=""

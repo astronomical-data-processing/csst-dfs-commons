@@ -8,7 +8,7 @@ class Result(dict):
     
     @property
     def success(self):
-        return self["code"] >= 0
+        return self["code"] == 0
 
     @property
     def data(self):
