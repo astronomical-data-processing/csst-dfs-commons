@@ -40,3 +40,18 @@ class Result(dict):
     def append(self, k: str, v):
         self[k] = v
         return self
+
+class Request(object):
+    def __init__(self):
+        super(Request, self).__init__()
+
+    @staticmethod
+    def from_dict(d: dict):
+        r = Request()
+        for k, v in d.items():
+            r.append(k, v)
+        return r
+
+    def append(self, k: str, v):
+        self.__setattr__(k, v)
+        return self
