@@ -1,12 +1,18 @@
-import dataclasses
+import copy
+from dataclasses import dataclass, field
 
 def from_proto_model_list(clazz, records):
     return [clazz().from_proto_model(r) for r in records]
+
 def from_dict_list(clazz, records):
     return [clazz().from_dict(r) for r in records]
+
 def to_proto_model_list(protoObjClazz, records):
     return [r.to_proto_model(protoObjClazz) for r in records]
-@dataclasses.dataclass
+
+def default_field(obj):
+    return field(default_factory=lambda: copy.copy(obj))    
+@dataclass
 class BaseModel:
 
     def from_dict(self, data = {}):
@@ -24,13 +30,15 @@ class BaseModel:
         for k in self.__dataclass_fields__.keys():
             v = self.__getattribute__(k)
             if v is not None:
-                if isinstance(v, list) or isinstance(v, tuple) or isinstance(v, dict):
+                if isinstance(v, list) or isinstance(v, tuple):
                     obj.__getattribute__(k).extend(v)
+                if isinstance(v, dict):
+                    obj.__getattribute__(k).update(v)                    
                 else:
                     obj.__setattr__(k, v)
         return obj
 
-@dataclasses.dataclass
+@dataclass
 class Gaia3Record(BaseModel):
     SourceId: int  = -1
     RandomIndex: int  = -1

@@ -39,3 +39,5 @@ test_reports.xml
 **/build/
 **/dist/
 **/_version.py
+
+.hypothesis

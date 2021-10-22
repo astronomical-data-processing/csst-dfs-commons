@@ -84,3 +84,14 @@ class DetectorStatus(BaseModel):
     status: str=""
     create_time: str=""
     status_time: str=""
+
+@dataclasses.dataclass
+class Level1PrcRecord(BaseModel):
+    id: int = 0
+    level1_id: int = 0
+    pipeline_id: str = ""
+    prc_module: str = ""
+    params_file_path: str=""
+    prc_status: int = 0
+    prc_time: str=""
+    result_file_path: str=""    
