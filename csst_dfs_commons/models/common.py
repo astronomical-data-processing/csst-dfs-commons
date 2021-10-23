@@ -72,7 +72,7 @@ class Gaia3Record(BaseModel):
     AstrometricGofAl: float = -1
     AstrometricChi2Al: float = -1
     AstrometricExcessNoise: float = -1
-    AstrometricExcessNoiseSi: float = -1
+    AstrometricExcessNoiseSig: float = -1
     AstrometricParamsSolved: int = -1
     AstrometricPrimaryFlag: int = -1
     NuEffUsedInAstrometry: float = -1
