@@ -32,7 +32,7 @@ class BaseModel:
             if v is not None:
                 if isinstance(v, list) or isinstance(v, tuple):
                     obj.__getattribute__(k).extend(v)
-                if isinstance(v, dict):
+                elif isinstance(v, dict):
                     obj.__getattribute__(k).update(v)                    
                 else:
                     obj.__setattr__(k, v)
