@@ -39,21 +39,21 @@ class DetectorStatus(BaseModel):
 
 @dataclasses.dataclass
 class Brick(BaseModel):
-    id: int = 0
+    id: int = -1
     ra: float = 0.0
     dec: float = 0.0
     boundingbox: str=""
 
 @dataclasses.dataclass
 class BrickObsStatus(BaseModel):
-    brick_id: int = 0
+    brick_id: int = -1
     band: str=""
     cover_num: int = 0
     update_time: str=""
 
 @dataclasses.dataclass
 class BrickLevel1(BaseModel):
-    brick_id: int = 0
+    brick_id: int = -1
     level1_id: int = 0
     obs_id: str=""
     module: str=""
@@ -83,7 +83,7 @@ class Level2ProducerRuning(BaseModel):
     id: int = 0
     job_id: int = 0
     producer_id: int = 0
-    brick_id: int = 0
+    brick_id: int = -1
     start_time: str=""
     end_time: str=""
     prc_status: int = 0
