@@ -37,3 +37,56 @@ class DetectorStatus(BaseModel):
     create_time: str=""
     status_time: str=""
 
+@dataclasses.dataclass
+class Brick(BaseModel):
+    id: int = 0
+    ra: float = 0.0
+    dec: float = 0.0
+    boundingbox: str=""
+
+@dataclasses.dataclass
+class BrickObsStatus(BaseModel):
+    brick_id: int = 0
+    band: str=""
+    cover_num: int = 0
+    update_time: str=""
+
+@dataclasses.dataclass
+class BrickLevel1(BaseModel):
+    brick_id: int = 0
+    level1_id: int = 0
+    obs_id: str=""
+    module: str=""
+    obs_time: str=""
+
+@dataclasses.dataclass
+class Level2Producer(BaseModel):
+    id: int = 0
+    name: str=""
+    priority: int = 0
+    gitlink: str=""
+    paramfiles: str=""
+    pre_producers: list = dataclasses.field(default_factory=list)
+    create_time: str=""
+    update_time: str=""      
+
+@dataclasses.dataclass
+class Level2Job(BaseModel):
+    id: int = 0
+    dag: str=""
+    status: int = 0
+    create_time: str=""
+    update_time: str=""     
+
+@dataclasses.dataclass
+class Level2ProducerRuning(BaseModel):
+    id: int = 0
+    job_id: int = 0
+    producer_id: int = 0
+    brick_id: int = 0
+    start_time: str=""
+    end_time: str=""
+    prc_status: int = 0
+    prc_result: str=""
+    create_time: str=""
+    update_time: str=""        
