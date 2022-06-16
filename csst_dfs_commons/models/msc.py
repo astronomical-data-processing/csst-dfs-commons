@@ -67,59 +67,28 @@ class Level1Record(BaseModel):
     refs: Dict[str,int] = default_field({})
 
 @dataclasses.dataclass
-class MSCLevel2CatalogRecord(BaseModel):
+class Level2Record(BaseModel):
+    id: int = 0
+    level1_id : int = 0
+    data_type: str=""
+    filename : str=""
+    file_path: str=""
+    qc2_status: int = 0
+    qc2_time: str=""
+    prc_status: int = 0
+    prc_time: str=""
+    create_time: str=""
+
+@dataclasses.dataclass
+class Level2CatalogRecord(BaseModel):
     source_id: int = 0
     obs_id : str = ""
     detector_no: str=""
     seq: int = 0
-    flux_aper_1: float  = -1
-    flux_aper_2: float  = -1
-    flux_aper_3: float  = -1
-    flux_aper_4: float  = -1
-    flux_aper_5: float  = -1
-    flux_aper_6: float  = -1
-    flux_aper_7: float  = -1
-    flux_aper_8: float  = -1
-    flux_aper_9: float  = -1
-    flux_aper_10: float  = -1
-    flux_aper_11: float  = -1
-    flux_aper_12: float  = -1
-    fluxerr_aper_1: float  = -1
-    fluxerr_aper_2: float  = -1
-    fluxerr_aper_3: float  = -1
-    fluxerr_aper_4: float  = -1
-    fluxerr_aper_5: float  = -1
-    fluxerr_aper_6: float  = -1
-    fluxerr_aper_7: float  = -1
-    fluxerr_aper_8: float  = -1
-    fluxerr_aper_9: float  = -1
-    fluxerr_aper_10: float  = -1
-    fluxerr_aper_11: float  = -1
-    fluxerr_aper_12: float  = -1
-    mag_aper_1: float  = -1
-    mag_aper_2: float  = -1
-    mag_aper_3: float  = -1
-    mag_aper_4: float  = -1
-    mag_aper_5: float  = -1
-    mag_aper_6: float  = -1
-    mag_aper_7: float  = -1
-    mag_aper_8: float  = -1
-    mag_aper_9: float  = -1
-    mag_aper_10: float  = -1
-    mag_aper_11: float  = -1
-    mag_aper_12: float  = -1
-    magerr_aper_1: float  = -1
-    magerr_aper_2: float  = -1
-    magerr_aper_3: float  = -1
-    magerr_aper_4: float  = -1
-    magerr_aper_5: float  = -1
-    magerr_aper_6: float  = -1
-    magerr_aper_7: float  = -1
-    magerr_aper_8: float  = -1
-    magerr_aper_9: float  = -1
-    magerr_aper_10: float  = -1
-    magerr_aper_11: float  = -1
-    magerr_aper_12: float  = -1
+    flux_aper: list = dataclasses.field(default_factory=list)
+    fluxerr_aper: list = dataclasses.field(default_factory=list)
+    mag_aper: list = dataclasses.field(default_factory=list)
+    magerr_aper: list = dataclasses.field(default_factory=list)
     flux_auto: float = -1
     fluxerr_auto: float = -1
     mag_auto: float = -1
@@ -269,7 +238,9 @@ class MSCLevel2CatalogRecord(BaseModel):
     disk_theta_world: float = -1
     disk_thetaerr_world: float = -1
     disk_theta_j2000: float = -1    
-    obs_time: str = ''
+    obs_time: str = '',
+    brick_id_8: int = 0,
+    brick_id_16: int = 0
 
 @dataclasses.dataclass
 class Level1PrcRecord(BaseModel):

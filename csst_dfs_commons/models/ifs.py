@@ -20,6 +20,7 @@ class Level0Record(BaseModel):
     obs_id: str = ""
     detector_no: str = ""
     obs_type: str = ""
+    object_name: str = ""
     obs_time: str=""
     exp_time: float = 0
     detector_status_id: int = 0
