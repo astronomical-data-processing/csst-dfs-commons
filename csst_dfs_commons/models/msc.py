@@ -238,8 +238,8 @@ class Level2CatalogRecord(BaseModel):
     disk_theta_world: float = -1
     disk_thetaerr_world: float = -1
     disk_theta_j2000: float = -1    
-    obs_time: str = '',
-    brick_id_8: int = 0,
+    obs_time: str = ''
+    brick_id_8: int = 0
     brick_id_16: int = 0
 
 @dataclasses.dataclass
