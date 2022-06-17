@@ -81,9 +81,7 @@ class Level2Record(BaseModel):
 
 @dataclasses.dataclass
 class Level2CatalogRecord(BaseModel):
-    source_id: int = 0
-    obs_id : str = ""
-    detector_no: str=""
+    level2_id: int = 0
     seq: int = 0
     flux_aper: list = dataclasses.field(default_factory=list)
     fluxerr_aper: list = dataclasses.field(default_factory=list)
@@ -238,9 +236,11 @@ class Level2CatalogRecord(BaseModel):
     disk_theta_world: float = -1
     disk_thetaerr_world: float = -1
     disk_theta_j2000: float = -1    
-    obs_time: str = ''
-    brick_id_8: int = 0
-    brick_id_16: int = 0
+    NS8HIdx: int = 0
+    NS16HIdx: int = 0
+    NS32HIdx: int = 0
+    NS64HIdx: int = 0
+    create_time: str = ''
 
 @dataclasses.dataclass
 class Level1PrcRecord(BaseModel):

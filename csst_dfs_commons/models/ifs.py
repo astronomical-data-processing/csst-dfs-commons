@@ -1,4 +1,6 @@
 import dataclasses
+from email import header
+from ensurepip import version
 from typing import Dict
 from .common import BaseModel, default_field
 
@@ -14,13 +16,20 @@ class Level0PrcRecord(BaseModel):
     result_file_path: str=""
 
 @dataclasses.dataclass
+class Level0HeaderRecord(BaseModel):
+    id: int = 0
+    object_name: str = ""
+    ra: float = 0
+    dec: float = 0
+    version: str = ""
+
+@dataclasses.dataclass
 class Level0Record(BaseModel):
     id: int = 0
     level0_id: str = ""
     obs_id: str = ""
     detector_no: str = ""
     obs_type: str = ""
-    object_name: str = ""
     obs_time: str=""
     exp_time: float = 0
     detector_status_id: int = 0
