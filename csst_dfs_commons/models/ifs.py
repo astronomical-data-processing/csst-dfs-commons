@@ -1,6 +1,4 @@
 import dataclasses
-from email import header
-from ensurepip import version
 from typing import Dict
 from .common import BaseModel, default_field
 
