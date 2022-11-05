@@ -90,6 +90,7 @@ class Level2Record(BaseModel):
     prc_status: int = 0
     prc_time: str=""
     create_time: str=""
+    pipeline_id: str=""
     import_status: int = 0
 
 @dataclasses.dataclass
@@ -103,6 +104,7 @@ class Level2CoRecord(BaseModel):
     prc_status: int = 0
     prc_time: str=""
     create_time: str=""
+    pipeline_id: str=""
     import_status: int = 0
 
 @dataclasses.dataclass
