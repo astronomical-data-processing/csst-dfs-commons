@@ -30,6 +30,7 @@ class Level0Record(BaseModel):
     prc_status: int = 0
     prc_time: str=""
     create_time: str=""
+    header: Dict[str,object] = default_field({})
 
 @dataclasses.dataclass
 class CalMergeRecord(BaseModel):

@@ -14,14 +14,6 @@ class Level0PrcRecord(BaseModel):
     result_file_path: str=""
 
 @dataclasses.dataclass
-class Level0HeaderRecord(BaseModel):
-    id: int = 0
-    object_name: str = ""
-    ra: float = 0
-    dec: float = 0
-    version: str = ""
-
-@dataclasses.dataclass
 class Level0Record(BaseModel):
     id: int = 0
     level0_id: str = ""
@@ -38,6 +30,7 @@ class Level0Record(BaseModel):
     prc_status: int = 0
     prc_time: str=""
     create_time: str=""
+    header: Dict[str,object] = default_field({})
 
 @dataclasses.dataclass
 class CalMergeRecord(BaseModel):

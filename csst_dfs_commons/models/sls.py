@@ -30,6 +30,7 @@ class Level0Record(BaseModel):
     prc_status: int = 0
     prc_time: str=""
     create_time: str=""
+    header: Dict[str,object] = default_field({})
 
 @dataclasses.dataclass
 class CalMergeRecord(BaseModel):
@@ -48,6 +49,7 @@ class CalMergeRecord(BaseModel):
     prc_time: str=""
     create_time: str=""
     level0_ids: list = dataclasses.field(default_factory=list)
+
 @dataclasses.dataclass
 class Level1Record(BaseModel):
     id: int = 0
@@ -63,6 +65,7 @@ class Level1Record(BaseModel):
     create_time: str=""
     pipeline_id: str=""
     refs: Dict[str,int] = default_field({})
+    
 @dataclasses.dataclass
 class Level2Spectra(BaseModel):
     id: int = 0
