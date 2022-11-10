@@ -38,7 +38,8 @@ class BaseModel:
             return None
         for k in self.__dataclass_fields__.keys():
             if k == 'header':
-                self.__setattr__(k, json.loads(record.__getattribute__(k)))
+                if record.__getattribute__(k):
+                    self.__setattr__(k, json.loads(record.__getattribute__(k)))
             else:
                 self.__setattr__(k, record.__getattribute__(k))
         return self
