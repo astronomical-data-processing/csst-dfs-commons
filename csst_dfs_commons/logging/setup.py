@@ -6,6 +6,8 @@
 # This file is part of CSST.
 
 # coding: utf-8
+import os
+import path
 import logging
 import logging.handlers
 
@@ -23,8 +25,12 @@ def setup_logging():
     ch.setLevel(logging.INFO)
     ch.setFormatter(cfmt)
 
+    logs_dir = os.getenv("CSST_DFS_LOGS_DIR", "logs")    
+
+    if not os.path.exists(logs_dir):
+        os.makedirs(logs_dir)
     # File handler
-    fh = logging.handlers.RotatingFileHandler('logs/csst.log',
+    fh = logging.handlers.RotatingFileHandler(os.path.join(logs_dir, 'csst_dfs.log'),
         maxBytes=10*1024*1024, backupCount=10)
     fh.setLevel(logging.INFO)
     fh.setFormatter(ffmt)
@@ -57,8 +63,12 @@ def setup_test_logging():
     ch.setLevel(logging.WARN)
     ch.setFormatter(cfmt)
 
+    logs_dir = os.getenv("CSST_DFS_LOGS_DIR", "logs")    
+
+    if not os.path.exists(logs_dir):
+        os.makedirs(logs_dir)
     # Outputs DEBUG level logging to file
-    fh = logging.FileHandler('logs/csst-test.log')
+    fh = logging.FileHandler(os.path.join(logs_dir, 'csst_dfs_test.log'),
     fh.setLevel(logging.DEBUG)
     fh.setFormatter(ffmt)
 
