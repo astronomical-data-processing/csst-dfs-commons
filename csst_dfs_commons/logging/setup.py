@@ -69,6 +69,7 @@ def setup_test_logging():
         os.makedirs(logs_dir)
     # Outputs DEBUG level logging to file
     fh = logging.FileHandler(os.path.join(logs_dir, 'csst_dfs_test.log'),
+        maxBytes=10*1024*1024, backupCount=10)
     fh.setLevel(logging.DEBUG)
     fh.setFormatter(ffmt)
 
