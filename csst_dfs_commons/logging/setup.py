@@ -7,7 +7,6 @@
 
 # coding: utf-8
 import os
-import path
 import logging
 import logging.handlers
 
