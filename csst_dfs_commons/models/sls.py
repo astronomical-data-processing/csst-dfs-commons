@@ -69,6 +69,7 @@ class Level1Record(BaseModel):
 @dataclasses.dataclass
 class Level2Spectra(BaseModel):
     id: int = 0
+    level0_id: str = ''
     spectra_id : str = ""
     level1_id: int=0
     region: str=""

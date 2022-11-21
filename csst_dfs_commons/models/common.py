@@ -16,7 +16,10 @@ def default_field(obj):
 
 class Dict(dict):
     __setattr__ = dict.__setitem__
-    __getattr__ = dict.__getitem__
+    __getattr__ = dict.__getitem__    
+    def __init__(self, **args):
+        super(Dict, self).__init__()
+        self.update(args)
  
 def dict_to_object(dictObj):
     if not isinstance(dictObj, dict):
