@@ -42,8 +42,10 @@ class Result(dict):
         return self
 
 class Request(object):
-    def __init__(self):
+    def __init__(self, **kvargs):
         super(Request, self).__init__()
+        for k, v in kvargs.items():
+            self.append(k, v)
 
     @staticmethod
     def from_dict(d: dict):
@@ -55,3 +57,11 @@ class Request(object):
     def append(self, k: str, v):
         self.__setattr__(k, v)
         return self
+
+    def __getattr__(self, attr):
+        try:
+            return object.__getattribute__(self, attr)
+        except:
+            return ''
+
+       
