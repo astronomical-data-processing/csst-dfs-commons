@@ -108,6 +108,7 @@ class Level0Record(BaseModel):
     level0_id: str = ""
     obs_id: str = ""
     detector_no: str = ""
+    filter: str=""
     obs_type: str = ""
     obs_time: str=""
     exp_time: float = 0

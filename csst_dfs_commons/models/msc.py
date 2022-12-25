@@ -9,6 +9,7 @@ class Level1Record(BaseModel):
     data_type: str=""
     cor_sci_id: int = 0
     prc_params: str=""
+    filter: str=""
     filename : str=""
     file_path: str=""
     qc1_status: int = 0
