@@ -20,7 +20,7 @@ class Dict(dict):
     def __init__(self, **args):
         super(Dict, self).__init__()
         self.update(args)
- 
+
 def dict_to_object(dictObj):
     if not isinstance(dictObj, dict):
         return dictObj

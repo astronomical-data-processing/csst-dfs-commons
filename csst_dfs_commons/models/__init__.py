@@ -63,5 +63,3 @@ class Request(object):
             return object.__getattribute__(self, attr)
         except:
             return ''
-
-       
