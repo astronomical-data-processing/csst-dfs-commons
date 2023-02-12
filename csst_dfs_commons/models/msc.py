@@ -66,7 +66,7 @@ class Level2CoRecord(BaseModel):
 class Level2CatalogRecord(BaseModel):
     level2_id: int = 0
     ID: int = 0
-    CCDNO: str = 0
+    CCDNO: int = 0
     objID: int = 0
     X: float = -1
     XErr: float = -1
