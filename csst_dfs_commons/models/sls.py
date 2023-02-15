@@ -11,8 +11,8 @@ class Level2Spectra(BaseModel):
     region: str=""
     filename : str=""
     file_path: str=""
-    qc1_status: int = 0
-    qc1_time: str=""
+    qc2_status: int = 0
+    qc2_time: str=""
     prc_status: int = 0
     prc_time: str=""
     create_time: str=""
