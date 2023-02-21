@@ -2,13 +2,20 @@ from astropy_healpix import HEALPix
 from astropy.coordinates import ICRS
 from astropy import units as u
 from astropy.coordinates import SkyCoord
+from astropy.io import fits
 
-def get_header_value(key: str, header, default_value = None):
+def get_header_value(key: str, headers, default_value = None):
     try:
-        v = header[key]
-        if type(v) == str:
-            return v.strip()
-        return v
+        ret_value = None
+        if not isinstance(headers, list):
+            headers = [headers]
+        for header in headers:
+            if key in header:
+                ret_value = header[key]
+                if type(ret_value) == str:
+                    return ret_value.strip()
+        if ret_value is None:
+            return default_value
     except Exception as e:
         return default_value
 
