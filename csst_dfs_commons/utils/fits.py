@@ -16,6 +16,8 @@ def get_header_value(key: str, headers, default_value = None):
                     return ret_value.strip()
         if ret_value is None:
             return default_value
+        else:
+            return ret_value
     except Exception as e:
         return default_value
 
