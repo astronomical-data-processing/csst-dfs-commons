@@ -21,9 +21,12 @@ def get_header_value(key: str, headers, default_value = None):
         return default_value
 
 def get_healpix_id(ra, dec, nside=32):
-    hp = HEALPix(nside=nside, order='nested', frame=ICRS())
-    coord = SkyCoord(ra = ra * u.deg, dec = dec * u.deg, frame='icrs')
-    return hp.skycoord_to_healpix(coord)
+    try:
+        hp = HEALPix(nside=nside, order='nested', frame=ICRS())
+        coord = SkyCoord(ra = ra * u.deg, dec = dec * u.deg, frame='icrs')
+        return hp.skycoord_to_healpix(coord)
+    except:
+        return -1
 
 def get_healpix_ids(ra, dec, radius, nside=32):
     hp = HEALPix(nside=nside, order='nested', frame=ICRS())
