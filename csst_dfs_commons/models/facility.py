@@ -140,6 +140,7 @@ class Level1Record(BaseModel):
     prc_time: str=""
     create_time: str=""
     pipeline_id: str=""
+    detector_no: str=""
     header: Dict[str,object] = default_field({})
     refs: Dict[str,str] = default_field({})
 
