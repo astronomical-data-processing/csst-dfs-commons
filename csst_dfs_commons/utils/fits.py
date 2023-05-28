@@ -6,6 +6,7 @@ from astropy.io import fits
 from astropy import wcs
 import numpy as np
 import healpy as hp
+
 def get_header_value(key: str, headers, default_value = None):
     try:
         ret_value = None
@@ -55,17 +56,20 @@ def fits_of_healpix_ids(filepath, nside=256):
     :return: a numpy.ndarray (n,)
     """    
     with fits.open(filepath) as hdulist:
-        nx = get_header_value('NAXIS1', hdulist, 0)
-        ny = get_header_value('NAXIS2', hdulist, 0)
+        return hdul_of_healpix_ids(hdulist, nside)
+    
+def hdul_of_healpix_ids(hdulist, nside=256):
+    nx = get_header_value('NAXIS1', hdulist, 0)
+    ny = get_header_value('NAXIS2', hdulist, 0)
 
-        fits_wcs = wcs.WCS(hdulist[1])
-        ra0, dec0 = fits_wcs.all_pix2world(0, 0, 1)
-        ra0, dec1 = fits_wcs.all_pix2world(0, ny, 1)
-        ra1, dec0 = fits_wcs.all_pix2world(nx, 0, 1)
-        ra1, dec1 = fits_wcs.all_pix2world(nx, ny, 1)
-        ra_poly, dec_poly = np.array([[ra0, ra0, ra1, ra1], [dec0, dec1, dec0, dec1]])
-        xyzpoly = spherical_to_cartesian(np.deg2rad(ra_poly), np.deg2rad(dec_poly), 1)
-        xyzpoly = tuple(map(tuple, xyzpoly))
-        xyzpoly = np.array(xyzpoly).reshape(-1, 3)
-        healpixids = hp.query_polygon(nside, xyzpoly.T)
-        return healpixids
+    fits_wcs = wcs.WCS(hdulist[1])
+    ra0, dec0 = fits_wcs.all_pix2world(0, 0, 1)
+    ra0, dec1 = fits_wcs.all_pix2world(0, ny, 1)
+    ra1, dec0 = fits_wcs.all_pix2world(nx, 0, 1)
+    ra1, dec1 = fits_wcs.all_pix2world(nx, ny, 1)
+    ra_poly, dec_poly = np.array([[ra0, ra0, ra1, ra1], [dec0, dec1, dec0, dec1]])
+    xyzpoly = spherical_to_cartesian(np.deg2rad(ra_poly), np.deg2rad(dec_poly), 1)
+    xyzpoly = tuple(map(tuple, xyzpoly))
+    xyzpoly = np.array(xyzpoly).reshape(-1, 3)
+    healpixids = hp.query_polygon(nside, xyzpoly.T)
+    return healpixids
