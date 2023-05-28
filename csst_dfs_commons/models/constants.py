@@ -72,3 +72,5 @@ SLS_DECTECTORS2FILTER = {
     29: "GV",
     30: "GI"
 }
+
+MSC_SCI_OBS_TYPE = 'SCI'
