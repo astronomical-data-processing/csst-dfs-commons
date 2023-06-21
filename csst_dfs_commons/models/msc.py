@@ -286,4 +286,5 @@ class Level2CoCatalogRecord(BaseModel):
     RatioErr_Disk: float = -1
     Spread_Model: float = -1
     SpreadErr_Model: float = -1
-    NS128HIdx: int = 0
+    Brick_Id: int = 0
+    Filter: str = ''

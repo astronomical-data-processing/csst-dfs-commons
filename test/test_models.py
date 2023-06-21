@@ -12,3 +12,4 @@ class CommonModelsTestCase(unittest.TestCase):
         r = Request(id = 1)
         assert r.id == 1, "not equal"
         assert r.xxx == '', "not equal"
+

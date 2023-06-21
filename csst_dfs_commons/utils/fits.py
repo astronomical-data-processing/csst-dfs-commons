@@ -23,7 +23,7 @@ def get_header_value(key: str, headers, default_value = None):
     except Exception as e:
         return default_value
 
-def get_healpix_id(ra, dec, nside=32):
+def get_healpix_id(ra, dec, nside=256):
     try:
         hp = HEALPix(nside=nside, order='nested', frame=ICRS())
         coord = SkyCoord(ra = ra * u.deg, dec = dec * u.deg, frame='icrs')
@@ -31,7 +31,7 @@ def get_healpix_id(ra, dec, nside=32):
     except:
         return -1
 
-def get_healpix_ids(ra, dec, radius, nside=32):
+def get_healpix_ids(ra, dec, radius, nside=256):
     hp = HEALPix(nside=nside, order='nested', frame=ICRS())
     coord = SkyCoord(ra = ra * u.deg, dec = dec * u.deg, frame='icrs')
     return hp.cone_search_skycoord(coord, radius = radius * u.deg)
@@ -72,4 +72,5 @@ def hdul_of_healpix_ids(hdulist, nside=256):
     xyzpoly = tuple(map(tuple, xyzpoly))
     xyzpoly = np.array(xyzpoly).reshape(-1, 3)
     healpixids = hp.query_polygon(nside, xyzpoly.T)
+
     return healpixids
