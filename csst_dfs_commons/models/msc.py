@@ -36,6 +36,7 @@ class Level2CoRecord(BaseModel):
 @dataclasses.dataclass
 class Level2CatalogRecord(BaseModel):
     level2_id: int = 0
+    OBSID: str=""
     CCDNO: int = 0
     objID: int = 0
     X: float = -1
@@ -159,6 +160,7 @@ class Level2CatalogRecord(BaseModel):
     Spread_Model: float = -1
     SpreadErr_Model: float = -1
     Brick_Id: int = 0
+    Filter: str = ""
     
 @dataclasses.dataclass
 class Level2CoCatalogRecord(BaseModel):
