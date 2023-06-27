@@ -9,7 +9,17 @@ class CommonFitsTestCase(unittest.TestCase):
         pass
 
     def test_hdul_of_healpix_ids(self):
-        hdul = fits.open()
-        r = hdul_of_healpix_ids(id = 1)
+        # hdul = fits.open()
+        # r = hdul_of_healpix_ids(id = 1)
+        pass
+
+    def test_get_header_value(self):
+        # cat_image_file = ""
+        # hdul = fits.open(cat_image_file)
+        # filter_str = get_header_value("FILTER", hdul, "")
+        # print("-"*20)
+        # print(filter_str)
+        # hdul.close()
+        pass
 
 

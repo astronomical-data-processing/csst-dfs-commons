@@ -154,3 +154,15 @@ class Level1PrcRecord(BaseModel):
     prc_status: int = 0
     prc_time: str=""
     result_file_path: str="" 
+
+@dataclasses.dataclass
+class OtherDataRecord(BaseModel):
+    id: int = 0
+    obs_id : str = ""
+    detector_no: str=""
+    module_id: str = ""
+    file_type: str=""
+    filename : str=""
+    file_path: str=""
+    create_time: str=""
+    pipeline_id: str=""
