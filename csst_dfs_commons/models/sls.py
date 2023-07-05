@@ -1,14 +1,12 @@
 import dataclasses
-from typing import Dict
-from .common import BaseModel, default_field
+from .common import BaseModel
 
 @dataclasses.dataclass
 class Level2Spectra(BaseModel):
     id: int = 0
     level0_id: str = ''
-    spectra_id : str = ""
     level1_id: int=0
-    region: str=""
+    file_type: str=""
     filename : str=""
     file_path: str=""
     qc2_status: int = 0
