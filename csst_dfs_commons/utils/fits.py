@@ -6,6 +6,7 @@ from astropy.io import fits
 from astropy import wcs
 import numpy as np
 import healpy as hp
+from csst_dfs_commons.models.constants import PI, DEFAULT_NSIDE
 
 def get_header_value(key: str, headers, default_value = None):
     try:
@@ -74,3 +75,34 @@ def hdul_of_healpix_ids(hdulist, nside=256):
     healpixids = hp.query_polygon(nside, xyzpoly.T)
 
     return healpixids
+
+def heapix_sql_condition(ra, dec, radius, ra_col = 'ra', dec_col = 'dec', nside = DEFAULT_NSIDE):
+    arcDec = (PI / 180) * dec
+    whereSql = f"abs((180./{PI}) * ACOS(SIN({PI} * {dec_col}/180) * SIN({arcDec}) + COS({PI} * {dec_col}/180) * COS({arcDec}) * COS(({PI}/180) * ({ra_col} - {ra})))) < {radius}"
+
+    heapix_ids = get_healpix_ids(ra, dec, radius, nside)
+    nside_column = "NS%dHIdx" % (nside,)
+    whereZoneSql = "%s in (%s)" % \
+                (nside_column, ','.join([str(i) for i in heapix_ids]))
+    
+    return whereZoneSql, whereSql
+    
+def level2_heapix_sql_condition(ra, dec, radius, ra_col = 'ra', dec_col = 'dec', nside = DEFAULT_NSIDE):
+    x2 = f"cos({dec_col})*cos({ra_col})"
+    y2 = f"cos({dec_col})*sin({ra_col})"
+    z2 = f"sin({dec_col})"
+
+    x1 = f"cos({dec})*cos({ra})"
+    y1 = f"cos({dec})*sin({ra})"
+    z1 = f"sin({dec})"
+
+    distance = f"pow(({x2}-{x1}),2)+pow(({y2}-{y1}),2)+pow(({z2}-{z1}),2)"
+
+    heapix_ids = get_healpix_ids(ra, dec, radius, nside)
+    nside_column = "brick_id"
+    whereZoneSql = "%s in (%s)" % \
+                (nside_column, ','.join([str(i) for i in heapix_ids]))
+    
+    whereSql = f"{distance} <= 4*pow({radius}/2, 2) and {whereZoneSql}"
+
+    return whereSql

@@ -18,3 +18,6 @@ def format_time_ms(float_time):
     data_head = time.strftime("%Y-%m-%d %H:%M:%S", local_time)
     data_secs = (float_time - int(float_time)) * 1000
     return "%s.%03d" % (data_head, data_secs)
+
+def str_to_datetime(str_time):
+    return datetime.strptime(str_time.split('.')[0], '%Y-%m-%d %H:%M:%S')

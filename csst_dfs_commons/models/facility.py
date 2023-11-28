@@ -3,6 +3,20 @@ from typing import List,Dict
 from .common import BaseModel, default_field
 
 @dataclasses.dataclass
+class UserRecord(BaseModel):
+    id: int = 0
+    user_name: str=""
+    true_name: str=""
+    email: str=""
+    passwd: str=""
+    organization: str=""
+    create_time: str=""
+    status: int = 0
+    last_login_ip: str=""
+    last_login_time: str=""
+    role: str=""
+
+@dataclasses.dataclass
 class Observation(BaseModel):
     id: int = 0
     obs_id: str = ""
